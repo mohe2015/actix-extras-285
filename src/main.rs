@@ -51,6 +51,12 @@ async fn set_working(session: Session) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    println!("1. http://127.0.0.1:8080/set-working");
+    println!("2. http://127.0.0.1:8080/get-working");
+    println!("3. http://127.0.0.1:8080/get-broken");
+    println!("4. http://127.0.0.1:8080/set-broken");
+    println!("5. http://127.0.0.1:8080/get-working");
+
     let secret_key = Key::generate();
 
     HttpServer::new(move || {
@@ -67,8 +73,6 @@ async fn main() -> std::io::Result<()> {
     .bind(("127.0.0.1", 8080))?
     .run()
     .await?;
-
-    println!("http://127.0.0.1:8080/set_working");
 
     Ok(())
 }
